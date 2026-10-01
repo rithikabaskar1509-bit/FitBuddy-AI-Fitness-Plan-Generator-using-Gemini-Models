@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBuddy - All Users & Workout Plans</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            padding: 2.5rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        .header-bar {
+            max-width: 1400px;
+            margin: 0 auto 1.75rem auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-home {
+            text-decoration: none;
+            background: #2563eb;
+            color: #ffffff;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .btn-home:hover {
+            background: #1d4ed8;
+        }
+
+        .table-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1e88e5;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 0.85rem 1rem;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+            font-size: 0.92rem;
+            color: #1e293b;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #fafbfc;
+        }
+
+        tr:hover td {
+            background-color: #f1f5f9;
+        }
+
+        pre {
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.82rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.45;
+            max-width: 450px;
+            max-height: 350px;
+            overflow-y: auto;
+            background: #f8fafc;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <h1>📋 FitBuddy - All Users & Workout Plans</h1>
+        <a href="/" class="btn-home">+ Generate New Plan</a>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Weight (kg)</th>
+                    <th>Goal</th>
+                    <th>Intensity</th>
+                    <th>Original Plan</th>
+                    <th>Updated Plan</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.age }}</td>
+                    <td>{{ user.weight }}</td>
+                    <td>{{ user.goal }}</td>
+                    <td>{{ user.intensity }}</td>
+                    <td><pre>{{ user.original_plan }}</pre></td>
+                    <td><pre>{{ user.updated_plan }}</pre></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
